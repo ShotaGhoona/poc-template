@@ -18,13 +18,17 @@
     "strict": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": false,
+    "noImplicitAny": false,
 
     /* Path alias */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+
+    /* Testing */
+    "types": ["vitest/globals"]
   },
   "include": ["src"]
 }

@@ -19,7 +19,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "Noto Sans JP", "sans-serif"],
+        sans: ["Inter", "Noto Sans JP", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
