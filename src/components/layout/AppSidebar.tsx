@@ -16,9 +16,9 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { title: "Dashboard", url: "/", icon: Home },
-  { title: "Items", url: "/items", icon: Package },
-  { title: "Settings", url: "/settings", icon: Settings },
+  { title: "ダッシュボード", url: "/", icon: Home },
+  { title: "アイテム", url: "/items", icon: Package },
+  { title: "設定", url: "/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
@@ -33,7 +33,7 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          <SidebarGroupLabel>メニュー</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {navItems.map((item) => (
@@ -57,7 +57,7 @@ export function AppSidebar() {
             {user?.email}
           </p>
           <Button variant="outline" size="sm" onClick={signOut}>
-            Sign Out
+            ログアウト
           </Button>
         </div>
       </SidebarFooter>

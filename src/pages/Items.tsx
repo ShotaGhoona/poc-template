@@ -140,7 +140,10 @@ export default function Items() {
                     size="sm"
                     onClick={(e) => {
                       e.stopPropagation();
-                      deleteItem.mutate(item.id);
+                      deleteItem.mutate(item.id, {
+                        onSuccess: () => toast.success("削除しました"),
+                        onError: (err) => toast.error(err.message || "削除に失敗しました"),
+                      });
                     }}
                   >
                     削除

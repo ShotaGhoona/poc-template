@@ -7,8 +7,8 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4">
       <h1 className="text-6xl font-bold text-muted-foreground mb-2">404</h1>
-      <p className="text-xl text-muted-foreground mb-6">Page not found</p>
-      <Button onClick={() => navigate("/")}>Go Home</Button>
+      <p className="text-xl text-muted-foreground mb-6">ページが見つかりません</p>
+      <Button onClick={() => navigate("/")}>ホームに戻る</Button>
     </div>
   );
 }

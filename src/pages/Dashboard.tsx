@@ -6,27 +6,27 @@ import { Activity, Users, Package, TrendingUp } from "lucide-react";
 
 const kpiCards = [
   {
-    title: "Total Items",
+    title: "アイテム数",
     value: "0",
-    description: "Active items in the system",
+    description: "アクティブなアイテム",
     icon: Package,
   },
   {
-    title: "Active Users",
+    title: "ユーザー数",
     value: "1",
-    description: "Currently active",
+    description: "現在アクティブ",
     icon: Users,
   },
   {
-    title: "Activity",
+    title: "アクティビティ",
     value: "0",
-    description: "Actions this week",
+    description: "今週のアクション",
     icon: Activity,
   },
   {
-    title: "Growth",
+    title: "成長率",
     value: "0%",
-    description: "Since last month",
+    description: "先月比",
     icon: TrendingUp,
   },
 ];
@@ -37,8 +37,8 @@ export default function Dashboard() {
   return (
     <AppLayout>
       <PageHeader
-        title="Dashboard"
-        description={`Welcome back${user?.email ? `, ${user.email}` : ""}!`}
+        title="ダッシュボード"
+        description={`おかえりなさい${user?.email ? `、${user.email}` : ""}！`}
       />
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {kpiCards.map((card) => (

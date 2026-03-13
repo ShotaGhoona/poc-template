@@ -17,6 +17,7 @@ export default function Auth() {
   const { signIn, signUp } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSignIn = async (e: React.FormEvent) => {
@@ -24,9 +25,9 @@ export default function Auth() {
     setLoading(true);
     try {
       await signIn(email, password);
-      toast.success("Signed in successfully");
+      toast.success("ログインしました");
     } catch (error: any) {
-      toast.error(error.message || "Failed to sign in");
+      toast.error(error.message || "ログインに失敗しました");
     } finally {
       setLoading(false);
     }
@@ -36,10 +37,10 @@ export default function Auth() {
     e.preventDefault();
     setLoading(true);
     try {
-      await signUp(email, password);
-      toast.success("Check your email for the confirmation link");
+      await signUp(email, password, name || undefined);
+      toast.success("確認メールを送信しました");
     } catch (error: any) {
-      toast.error(error.message || "Failed to sign up");
+      toast.error(error.message || "登録に失敗しました");
     } finally {
       setLoading(false);
     }
@@ -51,19 +52,19 @@ export default function Auth() {
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">POC App</CardTitle>
           <CardDescription>
-            Sign in to your account or create a new one
+            アカウントにサインインまたは新規登録
           </CardDescription>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="signin" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="signin">Sign In</TabsTrigger>
-              <TabsTrigger value="signup">Sign Up</TabsTrigger>
+              <TabsTrigger value="signin">ログイン</TabsTrigger>
+              <TabsTrigger value="signup">新規登録</TabsTrigger>
             </TabsList>
             <TabsContent value="signin">
               <form onSubmit={handleSignIn} className="space-y-4 mt-4">
                 <div className="space-y-2">
-                  <Label htmlFor="signin-email">Email</Label>
+                  <Label htmlFor="signin-email">メールアドレス</Label>
                   <Input
                     id="signin-email"
                     type="email"
@@ -74,25 +75,35 @@ export default function Auth() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signin-password">Password</Label>
+                  <Label htmlFor="signin-password">パスワード</Label>
                   <Input
                     id="signin-password"
                     type="password"
-                    placeholder="Your password"
+                    placeholder="パスワードを入力"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Signing in..." : "Sign In"}
+                  {loading ? "ログイン中..." : "ログイン"}
                 </Button>
               </form>
             </TabsContent>
             <TabsContent value="signup">
               <form onSubmit={handleSignUp} className="space-y-4 mt-4">
                 <div className="space-y-2">
-                  <Label htmlFor="signup-email">Email</Label>
+                  <Label htmlFor="signup-name">名前</Label>
+                  <Input
+                    id="signup-name"
+                    type="text"
+                    placeholder="表示名"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="signup-email">メールアドレス</Label>
                   <Input
                     id="signup-email"
                     type="email"
@@ -103,11 +114,11 @@ export default function Auth() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signup-password">Password</Label>
+                  <Label htmlFor="signup-password">パスワード</Label>
                   <Input
                     id="signup-password"
                     type="password"
-                    placeholder="Choose a password (min 6 chars)"
+                    placeholder="6文字以上のパスワード"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -115,7 +126,7 @@ export default function Auth() {
                   />
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? "Signing up..." : "Sign Up"}
+                  {loading ? "登録中..." : "新規登録"}
                 </Button>
               </form>
             </TabsContent>

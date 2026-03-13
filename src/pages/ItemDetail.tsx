@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { AppLayout } from "@/components/layout/AppLayout";
@@ -21,7 +21,12 @@ export default function ItemDetail() {
   const { data: item, isLoading } = useItem(id!);
   const updateItem = useUpdateItem();
   const [title, setTitle] = useState("");
-  const [initialized, setInitialized] = useState(false);
+
+  useEffect(() => {
+    if (item) {
+      setTitle(item.title);
+    }
+  }, [item]);
 
   if (isLoading) {
     return (
@@ -42,11 +47,6 @@ export default function ItemDetail() {
         </div>
       </AppLayout>
     );
-  }
-
-  if (!initialized) {
-    setTitle(item.title);
-    setInitialized(true);
   }
 
   const handleSave = async () => {

@@ -18,37 +18,37 @@ export default function Settings() {
   return (
     <AppLayout>
       <PageHeader
-        title="Settings"
-        description="Manage your account settings and preferences."
+        title="設定"
+        description="アカウント設定と環境設定の管理"
       />
       <div className="space-y-6 max-w-2xl">
         <Card>
           <CardHeader>
-            <CardTitle>Profile</CardTitle>
+            <CardTitle>プロフィール</CardTitle>
             <CardDescription>
-              Your account information.
+              アカウント情報
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label>Email</Label>
+              <Label>メールアドレス</Label>
               <Input value={user?.email || ""} disabled />
             </div>
             <div className="space-y-2">
-              <Label>User ID</Label>
+              <Label>ユーザーID</Label>
               <Input value={user?.id || ""} disabled />
             </div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Danger Zone</CardTitle>
+            <CardTitle>危険な操作</CardTitle>
             <CardDescription>
-              Irreversible actions for your account.
+              アカウントに対する取り消し不可能な操作
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button variant="destructive">Delete Account</Button>
+            <Button variant="destructive">アカウント削除</Button>
           </CardContent>
         </Card>
       </div>
